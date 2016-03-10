@@ -1,0 +1,21 @@
+require.config({
+	baseUrl:'/',
+	paths:{
+		'angular':'./lib/angular/angular.min',
+		'angularAsyncLoader':'./lib/angular-async-loader/angular-async-loader.min',
+		'angularUiRouter':'./lib/angular-ui-router/angular-ui-router.min',
+		'app':'app'
+	},
+	shim:{
+		'app':{deps:['angular','angularUiRouter']},
+		'angular':{exports:'angular'},
+		'angularAsyncLoader':{deps:['angular'],exports:'angularAsyncLoader'},
+		'angularUiRouter':{deps:['angular']},
+	}
+});
+
+require(['app-routes'],function(appRoutes){
+	angular.element(document).ready(function(){
+		angular.bootstrap(document,['directiveDemo']);
+	})
+})
